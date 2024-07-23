@@ -6,3 +6,4 @@ const janet = require('./janet')
 const allCats = [blue, sadie, janet]
 
 module.exports= allCats
+// console.log(allCats)

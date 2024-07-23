@@ -1,0 +1,21 @@
+{
+  "name": "class",
+  "version": "1.0.0",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: Nothing found\" && exit 1",
+    "start": "node script.js",
+    "dev": "I am a Custom Script"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

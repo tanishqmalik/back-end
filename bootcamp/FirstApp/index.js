@@ -46,7 +46,6 @@ app.get('/r/:subreddit/:postID', (req, res)=>{
     res.send(`<h1>Browsing the ${subreddit} subreddit, and postId : ${postID}</h1>`)
 })
 
-
 app.get('/cats', (req,res)=>{
     console.log("cat resquest")
     res.send("meow");

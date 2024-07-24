@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express();
 
+
+app.use(express.urlencoded({extended:true}))
+
+
 app.get('/tacos', (req, res)=>{
     res.send("get /tacos respnse")
 })
@@ -8,7 +12,8 @@ app.get('/tacos', (req, res)=>{
 app.post('/tacos', (req,res)=>{
     const {name, qty} = req.body;
     res.send(`here are your ${qty} ${name}`)
-    res.send('hello')
+    // console.log(req.body)
+    // res.send('hello')
 })
 
 app.listen(3000,()=>{

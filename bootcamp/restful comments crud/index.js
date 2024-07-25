@@ -66,11 +66,11 @@ app.post('/comments' , (req, res)=>{
     res.redirect('/comments')
 })
 
-app.get('/comments/:id', (req,res,next)=>{
+app.get('/comments/:id', (req,res)=>{
     const {id} = req.params;
-    const spec_comment = comments.find((e)=>{
-        e.id===parseInt(id)
-    })
-    console.log(spec_comment);
-    res.render('comments/show.ejs')
+    const comment =  comments.find((c)=>{
+        c.id === parseInt(id)
+    });
+    res.render('comments/show.ejs',{comments:comment })
+    // console.log(comment)
 })

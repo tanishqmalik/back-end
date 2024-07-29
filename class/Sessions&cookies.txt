@@ -1,0 +1,38 @@
+what are cookies
+
+these are small pieces of data stored on the clients browser by websites they visit. they serve various purposes in web-dev
+such as maintaining user sesssions, personalizing user experience and tracking user behaviour.
+cookies are sent along with http request to the server, allowing website to rember user prefrences
+and state between different pages or visits.
+
+
+uses of cookies
+1.maintain state
+2.user authentication
+3. tracking
+4. user behaviour
+
+
+types of cookies:
+
+1.sesssion cookies
+2.persistent cookies  those cookies those who dont have expiry time 
+3. secure cookies
+4.third-party cookies
+
+
+what are sessions 
+
+a sessions is a mechanism for persisting data across multiple requests
+from the same client. it allows servers to maintain stateful info
+albout clients throughoutt their interactions with the application
+sessions are essential for task such as user authentication, storin 
+user-specific data, managing user info 
+
+Best practices for securing Sessions and cookies
+
+1.use secure cookies
+2.impliment csrf protection
+3. rotate session identifiers
+4.impliment content security policy (csp)
+5. encrypt session data

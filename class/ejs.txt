@@ -1,0 +1,19 @@
+const { Template } = require("ejs");
+
+ejs= it is a templating engine that helps to create ab html with minimal code. also, it can inject data into html 
+Template on the client side and produce the final html
+
+features:
+-> straight forward syntax - integrates seamlessly with js code
+-> easy integration - works well with nodejs applications
+-> partial support - allows resUSE of templates across different parts of application
+-> conditionals and loops- supports logical operations with templates
+
+uses:-
+->server-site rendering - generates dynamic web pages based on user input or database queries
+-> dynamic content generation - provides a lightweight solution for creating dynamich html content
+
+advantages
+
+simplicity - easy to learn and use
+flexibility - adaptable to various web development needs 

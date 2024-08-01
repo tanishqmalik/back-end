@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body>
+
+    <div class="bg-zinc-700 h-screen w-full flex flex-col items-center justify-center gap-4 ">
+        <form class="items-center flex flex-col gap-4">
+        <h1 class="text-yellow-400 text-3xl ">Notes App</h1>
+        <input class="w-[30] bg-zinc-500 h-10 text-white" type="text">
+        <textarea class="bg-zinc-500 h-40 w-96 text-white"></textarea>
+        <button class="text-white">Create Notes</button>
+        </form>
+
+        <div class="pt-12">
+            <% if(files.length > 0) { %>
+                <% files.forEach((val) => { %>
+
+                    <div class="bg-zinc-400 px-10 py-10 relative">
+                        <h1>textfile name</h1>
+                        <p>paragraph</p>
+
+                        <a class="absolute bottom-0 right-1 cursor-pointer ">edit</a>
+                    </div>
+                    
+                <% }) %>
+            <% } else { %>
+                <h1 class="text-gray-400">No files</h1>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+</html>

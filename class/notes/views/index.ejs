@@ -26,7 +26,12 @@
             <div class="text-white bg-slate-800 w-[10%] rounded-lg flex flex-col items-center ">
                 <h1><%= val%> </h1>
                 <a href="/files/<%= val %>"class="text-blue-600">Read more....</a>
-                <a href="/edittile/<%= val%>">edit</a>
+                <a href="/edit/<%= val %>">edit</a>
+
+                <form method="post" action="/files/<%=val%>?_method=DELETE">
+                    <button>Delete</button>
+                </form>
+                
             </div>
             <% }) %>
 

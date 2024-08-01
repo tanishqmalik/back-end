@@ -38,7 +38,6 @@ app.set('views', path.join(__dirname, 'views'))
 // })
 
 //routes
-
 app.get('/' ,function(req,res){
     fs.readdir('./files', (err,files)=>{
         // console.log(files)
@@ -51,7 +50,6 @@ app.listen(3000, ()=>{
     console.log("listening at 3000")
 })
 
-
 app.post('/create', (req,res)=>{
     fs.writeFile(`./files/${req.body.title.split(' ').join('')}.txt`, req.body.details, (err)=>{
         res.redirect('/')
@@ -61,13 +59,37 @@ app.post('/create', (req,res)=>{
 app.get('/files/:filename', (req, res,next)=>{
     // res.send(`${req.params.filename}`);
     // res.render('detail')
-    fs.readFile(`./files/${req.params.filename}`, 'utf-8', (err,data)=>{
+    fs.readFile(`./files/${req.params.filename}`, "utf-8", (err,filedata)=>{
         // const {filename,data} = req.params
-        res.render('detail.ejs', {filename:req.params.filename, filedata:req.params.data})
+        res.render('detail.ejs', {filename:req.params.filename, filedata})
     })
     // next();
 })
 
-app.get('/edittitle/:filename', (req,res)=>{
-    res.render('edittitle');
+app.get('/edit/:filename', (req,res)=>{
+    res.render('edit.ejs',{filename: req.params.filename});
 })
+
+app.post('/edit',(req,res)=>{
+    fs.rename(`./files/${req.body.previous}`,`./files/${req.body.new.split(' ').join('')}.txt`,(err)=>{
+        res.redirect('/')
+    })
+})
+
+// app.post('/editdetails',(req,res)=>{
+//     fs.writeFile
+// })
+
+app.get('/editdetails/:filename/:filedata', (req,res)=>{
+    res.render('editdetails.ejs',{
+        filename: req.params.filename,
+        filedata: res.params.filedata
+    })
+})
+
+app.delete('/files/:filename', (req,res)=>{
+    
+    res.redirect('/')
+})
+
+

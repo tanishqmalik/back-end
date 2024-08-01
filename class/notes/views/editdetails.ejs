@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="bg-slate-800 gap-4 text-black w-full h-[200px] flex items-center flex-col">
+        <form class="flex flex-col gap-4" action="/editdetails" method="post">
+            <input class="block" type="text" name="title" value="<%=filename%> readonly">
+            <textarea class="block px-5 py-3"><%= filedata %></textarea>
+            
+    </form>
+    </div>
+         
+</body>
+</html>

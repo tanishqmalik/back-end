@@ -21,7 +21,6 @@ app.get('/', (req,res)=>{
     })
 })
 
-
 app.post('/create', (req,res)=>{
     fs.writeFile(`./files/${req.body.title}.txt`, req.body.details, (err)=>{
         res.redirect('/')
@@ -34,11 +33,30 @@ app.get('/viewdata/:filename', (req,res)=>{
     })
 })
 
-app.post('/editTitle',(req, res)=>{
-    fs.rename(`./files/${req.params.filename}`, `./files/${req.params.new}`, (err)=>{
+
+app.get('/editTitle/:filename', (req, res)=>{
+    // fs.readFile(`./files/${req.params.filename}`, (err, filedata)=>{
+        res.render('editTitle', {filename: req.params.filename})
+    // })
+})
+
+// app.post('/editTitle',(req, res)=>{
+//     fs.rename(`./files/${req.body.initial}`, `./files/${req.body.updatedTitle}.txt`, (err)=>{
+//         res.redirect('/')
+//     })
+// })
+
+app.post('/editTitle',(req,res)=>{
+    fs.rename(`./files/${req.body.initial}`,`./files/${req.body.updatedTitle.split(' ').join('')}.txt`,(err)=>{
         res.redirect('/')
     })
 })
 
+app.get('/editData/:filename', (req,res)=>{
+    fs.readFile(`./files/${req.params.filename}` , 'utf-8', (err, filedata)=>{
+        res.render('fileDetails', {filedata:req.body.filedata, filedata})
+    })
+})
 
-app.get('/editTitle')
+// app.post('/editData', (req,res)=>{
+// })

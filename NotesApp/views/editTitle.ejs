@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
-        <input type="text" readonly value="<%=filename%>">
-        <input type="text" value="<%=%>"> 
+    <form method="post" action="/editTitle">
+        <input type="text"  readonly value="<%=filename%>" name="initial">
+        <input type="text" value="" name="updatedTitle"> 
+        <button type="submit">update your title</button>
     </form>
 </body>
 </html>

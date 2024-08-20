@@ -7,8 +7,8 @@
 </head>
 <body>
     <form action="/editData" method="post">
-        <input readonly value="<%=filedata%>" name="initialData">
-        <textarea name="updatedData"></textarea>
+        <input readonly value="<%=filename%>" name="initialData">
+        <textarea name="updatedData"> <%=filedata%> </textarea>
         <button>update data</button>
     </form>
 </body>

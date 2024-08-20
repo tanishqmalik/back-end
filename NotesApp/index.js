@@ -52,11 +52,15 @@ app.post('/editTitle',(req,res)=>{
     })
 })
 
-app.get('/editData/:filename', (req,res)=>{
-    fs.readFile(`./files/${req.params.filename}` , 'utf-8', (err, filedata)=>{
-        res.render('fileDetails', {filedata:req.body.filedata, filedata})
-    })
+app.get('/editData/:filename/:filedata', (req,res)=>{
+    // fs.readFile(`./files/${req.params.filename}` , 'utf-8', (err, filedata)=>{
+        res.render('fileDetails', {filename: req.params.filename,
+            filedata:req.params.filedata})
+    // })
 })
 
-// app.post('/editData', (req,res)=>{
-// })
+app.post('/editData', (req,res)=>{
+    fs.writeFile(`./files/${req.body.title}.txt`, req.body.updatedData, (err)=>{
+        res.redirect('/')
+    })
+})

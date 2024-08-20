@@ -37,10 +37,10 @@ app.get('/about', (req, res)=>{
     res.send("this is about section")
 })
 
-// app.get('/contact', (req, res)=>{
-//     // res.send("this is con section")
-//     res.render('public/contact.html')
-// })
+app.get('/contact', (req, res)=>{
+    // res.send("this is con section")
+    res.render('public/contact.html')
+})
 
 
 app.get('/profile', (req, res,next)=>{

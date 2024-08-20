@@ -13,6 +13,17 @@ uses of cookies
 4. user behaviour
 
 
+advantages
+
+personalizing  store user prefrences e.g language, theme, etc
+tracking behaviour  :-  tracking the user data and user interaction
+session management 
+performance enhancement :- website will be re-load easily next time because it will not send request again and again due to having data of user 
+
+authentication:- cookies store authentication
+tokens , verifying user indentity and ensuring secure access to private information 
+
+
 types of cookies:
 
 1.sesssion cookies

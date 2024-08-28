@@ -4,7 +4,8 @@ const path = require('path')
 
 const mongoose = require('mongoose');
 
-const Product = require('./models/Product')
+const Product = require('./models/Product');
+const exp = require('constants');
 
 mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
 
@@ -22,17 +23,52 @@ const port = 3000
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
+// app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({extended:true}));
 
 app.get('/products', async (req,res)=>{
     const products = await Product.find({})
-    console.log(products)
+    // console.log(products)
     res.render('products/index', {products});
+})
+app.get('/products/new', (req,res)=>{
+    res.render('products/new')
+})
+
+app.post('/products', async (req,res)=>{
+     await Product.create(
+        {name:req.body.name,
+        price:req.body.price,
+    category:req.body.category}
+    )
+    // createProduct();
+    res.redirect('products')
+    // console.log(req.body)
+    // res.send("making your product")
+})
+
+app.get('/products/update/:id',async (req, res)=>{
+    const id = req.params.id
+    const foundProduct = await Product.findById(id)
+    // const updateProduct
+    // res.send("okkkayy")
+    res.render('products/updateProduct', {foundProduct})
+})
+
+app.post('/products/:id', async (req,res)=>{
+    const id = req.params.id
+    const updatedProduct = await Product.findByIdAndUpdate(id,{name:req.body.name,
+        price:req.body.price,
+        category:req.body.category});
+    // res.redirect(`products/${id}`)
+    res.send("posted")
+    console.log(req.body)
 })
 
 app.get('/products/:id',async (req,res)=>{
     const id = req.params.id;
     const findProduct = await Product.findById(id);
-    console.log(findProduct.price)
+    // console.log(findProduct.price)
     res.render('products/show', {findProduct})
     // res.send('details page')
 })

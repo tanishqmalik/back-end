@@ -18,7 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/farmStand')
 })
 
 
-const port = 3000
+const port = 4000
 
 
 const categories = ['fruit', 'vegetable','dairy']
@@ -29,6 +29,27 @@ app.set('view engine', 'ejs')
 // app.use(express.urlencoded({extended:true}))
 app.use(express.urlencoded({extended:true}));
 
+// app.use((req,res,next)=>{
+//     const {password} = req.query
+//     if(password ==="sulabh"){
+//         next();
+//     }
+//     else{
+//         res.send('Sorry you need a password')
+//     }
+    
+// })
+
+
+const verifyPassword = (req,res,next) =>{
+    const {password} = req.query
+    if(password==='sulabh'){
+        next();
+    }
+    else{
+        res.send('sorry you need a password')
+    }
+}
 
 
 
@@ -55,7 +76,7 @@ app.post('/products', async (req,res)=>{
     // res.send("making your product")
 })
 
-app.get('/products/update/:id',async (req, res)=>{
+app.get('/products/update/:id', verifyPassword,async (req, res)=>{
     const id = req.params.id
     const foundProduct = await Product.findById(id)
     // const updateProduct
@@ -86,6 +107,10 @@ app.get('/products/delete/:id', async (req,res)=>{
     const id = req.params.id;
     await Product.deleteOne({ _id: id});
     res.render('Products/delete')
+})
+
+app.use((req,res)=>{
+    res.status(404).send("Not found")
 })
 
 app.listen(port, ()=>{
